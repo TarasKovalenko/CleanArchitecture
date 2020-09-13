@@ -7,12 +7,12 @@
 
 This is a solution template for creating a Single Page App (SPA) with Angular and ASP.NET Core following the principles of Clean Architecture. Create a new project based on this template by clicking the above **Use this template** button or by installing and running the associated NuGet package (see Getting Started for full details). 
 
-
 ## Technologies
+
 * .NET Core 3.1
 * ASP .NET Core 3.1
 * Entity Framework Core 3.1
-* Angular 9
+* Angular 10
 * MediatR
 * AutoMapper
 * FluentValidation
@@ -27,7 +27,8 @@ The easiest way to get started is to install the [NuGet package](https://www.nug
 3. Run `dotnet new --install Clean.Architecture.Solution.Template` to install the project template
 4. Create a folder for your solution and cd into it (the template will use it as project name)
 5. Run `dotnet new ca-sln` to create a new project
-6. Navigate to `src/WebUI` and run `dotnet run` to launch the project
+6. Navigate to `src/WebUI/ClientApp` and run `npm start` to launch the front end (Angular)
+7. Navigate to `src/WebUI` and run `dotnet run` to launch the back end (ASP.NET Core Web API)
 
 Check out my [blog post](https://jasontaylor.dev/clean-architecture-getting-started/) for more information.
 
@@ -49,9 +50,9 @@ When you run the application the database will be automatically created (if nece
 
 To use `dotnet-ef` for your migrations please add the following flags to your command (values assume you are executing from repository root)
 
-- `--project src/Infrastructure` (optional if in this folder)
-- `--startup-project src/WebUI`
-- `--output-dir Persistence/Migrations`
+* `--project src/Infrastructure` (optional if in this folder)
+* `--startup-project src/WebUI`
+* `--output-dir Persistence/Migrations`
 
 For example, to add a new migration from the root folder:
 
@@ -63,11 +64,9 @@ For example, to add a new migration from the root folder:
 
 This will contain all entities, enums, exceptions, interfaces, types and logic specific to the domain layer.
 
-
 ### Application
 
 This layer contains all application logic. It is dependent on the domain layer, but has no dependencies on any other layer or project. This layer defines interfaces that are implemented by outside layers. For example, if the application need to access a notification service, a new interface would be added to application and an implementation would be created within infrastructure.
-
 
 ### Infrastructure
 
